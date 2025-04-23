@@ -1,0 +1,13 @@
+ast
+os
+re
+textwrap
+logging
+concurrent.futures
+python-dotenv
+radon
+prettytable
+google-generativeai
+javalang
+esprima
+pycparser
