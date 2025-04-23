@@ -17,7 +17,7 @@
 2. **Installing Dependencies**  
    - Open a terminal and type this command to install the necessary packages:  
      ```
-     -pip install -r requirements.txt
+    -pip install -r requirements.txt
 
      ```
     -✅ ast → For parsing Python source code into abstract syntax trees.
@@ -28,6 +28,7 @@
     -✅ javalang → For parsing and analyzing Java source code.
     -✅ esprima → For parsing JavaScript/TypeScript code.
     -✅ pycparser → For parsing C source code.
+   
 
 3. **Running the Project**  
    - Once everything is prepared, run the <ins>updated_app.py</ins> file.
@@ -40,7 +41,7 @@
 | --- | --- |
 | <a href = "https://github.com/Gerard-M">Gerard Andrei M. Malapote</a>| gerardmalapote123@gmail.com |
 | <a href = "https://github.com/zedricedwardc">Zedric Edward C. Hernandez</a>| hernandezzedricedward@gmail.com |
-| <a href = "https://github.com/"></a>| |
+| <a href = "https://github.com/coochill ">Joy Susette V. Domingo</a>| joysusette@gmail.com |
 | <a href = "https://github.com/VinceAbella"> Vince Jericho Abella </a>| vinceabella07@gmail.com |  
 
 ---
