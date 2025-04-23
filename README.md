@@ -16,10 +16,8 @@
 
 2. **Installing Dependencies**  
    - Open a terminal and type this command to install the necessary packages:  
-     ```
     -pip install -r requirements.txt
 
-     ```
     -✅ ast → For parsing Python source code into abstract syntax trees.
     -✅ python-dotenv → For loading environment variables from .env files.
     -✅ radon → For code complexity and maintainability analysis.
