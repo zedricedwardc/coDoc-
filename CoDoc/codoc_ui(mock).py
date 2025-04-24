@@ -98,9 +98,19 @@ lang_selector.pack(side="left", padx=(0, 10))
 checkup_btn = tk.Button(control_bar, text="💜 Code Checkup", command=code_checkup, bg=COLOR_BTN, font=("Helvetica", 10, "bold"))
 checkup_btn.pack(side="left")
 
-code_text = scrolledtext.ScrolledText(code_area, bg=COLOR_TEXT_BG, fg=COLOR_TEXT_FG, insertbackground="white", font=FONT_TEXT, bd=4, relief="sunken",  wrap=tk.WORD)
+code_text = scrolledtext.ScrolledText(
+    code_area,
+    bg=COLOR_TEXT_BG,
+    fg=COLOR_TEXT_FG,
+    insertbackground="white",
+    font=FONT_TEXT,
+    bd=4,
+    relief="sunken",
+    wrap=tk.NONE  
+)
 code_text.insert(tk.END, "def Add():\n    pass")
 code_text.pack(padx=10, pady=10, fill="both", expand=True)
+
 
 # === Side Panel ===
 side_panel = tk.Frame(main_layout, bg=COLOR_SIDE)
