@@ -1,10 +1,49 @@
 import tkinter as tk
 from tkinter import messagebox, scrolledtext
 from tkinter import ttk
+from updated_app import run_analysis
+import threading
 
 def code_checkup():
-    selected_lang = lang_selector.get()
-    messagebox.showinfo("Code Checkup", f"Running code checkup for {selected_lang}...")
+    code = code_text.get("1.0", tk.END).strip()
+    if not code:
+        messagebox.showwarning("Input Needed", "Please paste or type your code before analyzing.")
+        return
+
+    selected_lang = lang_selector.get().lower()
+    checkup_btn.config(state="disabled")
+    surgery_btn.config(state="disabled")
+    messagebox.showinfo("Analyzing", f"Analyzing {selected_lang} code... Please wait.")
+
+    def perform_analysis():
+        try:
+            result = run_analysis(code)
+
+            diag_text.config(state="normal")
+            diag_text.delete("1.0", tk.END)
+            diag_text.insert(tk.END, result['native_analysis'].get('table', 'No metrics available'))
+            diag_text.config(state="disabled")
+
+            pres_text.config(state="normal")
+            pres_text.delete("1.0", tk.END)
+            pres_text.insert(tk.END, result['ai_insights'])
+            pres_text.config(state="disabled")
+
+            messagebox.showinfo("Analysis Complete", f"Checkup for {selected_lang.capitalize()} code complete!")
+
+        except Exception as e:
+            messagebox.showerror("Analysis Error", str(e))
+        finally:
+            checkup_btn.config(state="normal")
+            surgery_btn.config(state="normal")
+
+    threading.Thread(target=perform_analysis).start()
+
+
+
+def code_surgery():
+    messagebox.showinfo("Code Surgery", "Refactor suggestions are shown on the right panel under 'Prescription'.")
+
 
 def code_surgery():
     messagebox.showinfo("Code Surgery", "Performing code surgery...")
@@ -59,7 +98,7 @@ lang_selector.pack(side="left", padx=(0, 10))
 checkup_btn = tk.Button(control_bar, text="💜 Code Checkup", command=code_checkup, bg=COLOR_BTN, font=("Helvetica", 10, "bold"))
 checkup_btn.pack(side="left")
 
-code_text = scrolledtext.ScrolledText(code_area, bg=COLOR_TEXT_BG, fg=COLOR_TEXT_FG, insertbackground="white", font=FONT_TEXT, bd=4, relief="sunken")
+code_text = scrolledtext.ScrolledText(code_area, bg=COLOR_TEXT_BG, fg=COLOR_TEXT_FG, insertbackground="white", font=FONT_TEXT, bd=4, relief="sunken",  wrap=tk.WORD)
 code_text.insert(tk.END, "def Add():\n    pass")
 code_text.pack(padx=10, pady=10, fill="both", expand=True)
 
