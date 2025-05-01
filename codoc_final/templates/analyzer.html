@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}CoDoc - Code Analyzer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analyzer.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="split-layout">
+    <!-- Left side: Code Editor -->
+    <div class="editor-section">
+        <div class="editor-header">
+            <div class="language-selector">
+                <label for="language">Language:</label>
+                <select id="language">
+                    <option value="auto">Auto-detect</option>
+                    <option value="python" selected>Python</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="java">Java</option>
+                    <option value="c">C</option>
+                </select>
+            </div>
+            <button id="analyze-btn" class="primary-btn">
+                <i class="fas fa-play"></i> Analyze Code
+            </button>
+        </div>
+        <div class="editor-wrapper">
+            <textarea id="code-editor"></textarea>
+        </div>
+        <div class="sample-code">
+            <button id="sample-python" class="sample-btn">Python Sample</button>
+            <button id="sample-js" class="sample-btn">JavaScript Sample</button>
+            <button id="sample-java" class="sample-btn">Java Sample</button>
+            <button id="sample-c" class="sample-btn">C Sample</button>
+        </div>
+    </div>
+
+    <!-- Right side: Analysis Results -->
+    <div class="results-section" id="results-section">
+        <div class="results-placeholder" id="results-placeholder">
+            <div class="placeholder-content">
+                <i class="fas fa-code-branch fa-3x"></i>
+                <h2>Enter your code and click "Analyze Code"</h2>
+                <p>Your analysis results will appear here</p>
+            </div>
+        </div>
+        
+        <div class="results-container hidden" id="results-container">
+            <div class="results-header">
+                <h2>Analysis Results</h2>
+                <div class="results-actions">
+                    <button id="refactor-btn" class="secondary-btn">
+                        <i class="fas fa-magic"></i> Refactor Code
+                    </button>
+                </div>
+            </div>
+            
+            <div class="results-content">
+                <div class="metrics-container">
+                    <h3><i class="fas fa-chart-bar"></i> Code Metrics</h3>
+                    <div class="metrics-grid" id="metrics-grid"></div>
+                </div>
+                
+                <div class="complexity-container">
+                    <h3><i class="fas fa-project-diagram"></i> Function Complexity</h3>
+                    <div id="complexity-table"></div>
+                </div>
+                
+                <div class="ai-insights">
+                    <h3><i class="fas fa-robot"></i> AI Insights</h3>
+                    <div id="ai-content" class="ai-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Refactor Modal -->
+<div id="refactor-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Refactored Code</h2>
+            <button id="close-refactor-modal" class="icon-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="refactor-editor-wrapper">
+                <textarea id="refactored-code"></textarea>
+            </div>
+            <div class="refactor-description" id="refactor-description">
+                <h3>Improvements Made:</h3>
+                <div id="refactor-improvements" class="refactor-improvements-content"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button id="accept-refactor" class="primary-btn">
+                <i class="fas fa-check"></i> Accept Changes
+            </button>
+            <button id="cancel-refactor" class="secondary-btn">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Error Modal -->
+<div id="error-modal" class="modal hidden">
+    <div class="modal-content error-modal-content">
+        <div class="modal-header error-modal-header">
+            <h2><i class="fas fa-exclamation-circle"></i> Code Analysis Error</h2>
+            <button id="close-error-btn" class="icon-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body error-modal-body">
+            <div class="error-icon">
+                <i class="fas fa-bug"></i>
+            </div>
+            <p id="error-message" class="error-message"></p>
+            <p class="error-hint">Please check your code and try again.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="close-error-btn-bottom" class="primary-btn">
+                Got it
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+<script src="{{ url_for('static', filename='js/samples.js') }}"></script>
+<script src="{{ url_for('static', filename='js/analyzer.js') }}"></script>
+{% endblock %}
