@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title %}CoDoc - Learning Modules{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/modules.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="modules-container">
+    <h1 class="page-title">Learning Modules</h1>
+    
+    <div class="module-card">
+        <div class="module-header">
+            <h2><i class="fas fa-clock"></i> Time Complexity</h2>
+        </div>
+        <div class="module-content">
+            <p>Time complexity is a fundamental concept in computer science that measures the amount of time an algorithm takes to run as a function of the length of the input. Understanding time complexity is crucial for writing efficient code, especially when dealing with large datasets.</p>
+            
+            <h3>Common Time Complexities</h3>
+            <div class="complexity-table-container">
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Notation</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                            <th>Efficiency</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>O(1)</td>
+                            <td>Constant</td>
+                            <td>Array access, hash table lookup</td>
+                            <td><span class="complexity-level level-low">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td>O(log n)</td>
+                            <td>Logarithmic</td>
+                            <td>Binary search, balanced trees</td>
+                            <td><span class="complexity-level level-low">Very Good</span></td>
+                        </tr>
+                        <tr>
+                            <td>O(n)</td>
+                            <td>Linear</td>
+                            <td>Simple loops, linear search</td>
+                            <td><span class="complexity-level level-low">Good</span></td>
+                        </tr>
+                        <tr>
+                            <td>O(n log n)</td>
+                            <td>Linearithmic</td>
+                            <td>Efficient sorting (merge sort, quicksort)</td>
+                            <td><span class="complexity-level level-medium">Fair</span></td>
+                        </tr>
+                        <tr>
+                            <td>O(n²)</td>
+                            <td>Quadratic</td>
+                            <td>Nested loops, bubble sort</td>
+                            <td><span class="complexity-level level-medium">Poor</span></td>
+                        </tr>
+                        <tr>
+                            <td>O(2ⁿ)</td>
+                            <td>Exponential</td>
+                            <td>Recursive Fibonacci, power set</td>
+                            <td><span class="complexity-level level-high">Very Poor</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Why Time Complexity Matters</h3>
+            <p>As input sizes grow, algorithms with poor time complexity become impractical. For example, an algorithm with O(n²) complexity might work fine for 100 elements but would be extremely slow for 1 million elements. Understanding time complexity helps you choose the right algorithms and data structures for your specific use case.</p>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-lightbulb"></i> Pro Tip</h4>
+                <p>When analyzing time complexity, focus on the dominant term and ignore constants. For example, O(2n + 10) simplifies to O(n), and O(n² + n) simplifies to O(n²).</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="module-card">
+        <div class="module-header">
+            <h2><i class="fas fa-memory"></i> Space Complexity</h2>
+        </div>
+        <div class="module-content">
+            <p>Space complexity measures the amount of memory an algorithm uses relative to the input size. While time complexity often gets more attention, space complexity is equally important, especially in memory-constrained environments.</p>
+            
+            <h3>Understanding Space Complexity</h3>
+            <p>Space complexity includes:</p>
+            <ul>
+                <li><strong>Auxiliary Space:</strong> Extra space used by the algorithm (excluding input)</li>
+                <li><strong>Input Space:</strong> Space used to store the input</li>
+            </ul>
+            
+            <h3>Common Space Complexities</h3>
+            <div class="complexity-table-container">
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Notation</th>
+                            <th>Name</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>O(1)</td>
+                            <td>Constant</td>
+                            <td>Variables, simple operations</td>
+                        </tr>
+                        <tr>
+                            <td>O(n)</td>
+                            <td>Linear</td>
+                            <td>Arrays, lists proportional to input</td>
+                        </tr>
+                        <tr>
+                            <td>O(n²)</td>
+                            <td>Quadratic</td>
+                            <td>2D arrays, matrices</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Space-Time Tradeoffs</h3>
+            <p>Often, algorithms that use more space can run faster, and vice versa. For example:</p>
+            <ul>
+                <li>Memoization improves time complexity by storing results in memory</li>
+                <li>In-place algorithms save space but might be slower</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-balance-scale"></i> Finding Balance</h4>
+                <p>The best algorithm often depends on your specific constraints. If memory is limited but time is abundant, prioritize space efficiency. If you need fast results and have plenty of memory, prioritize time efficiency.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="module-card">
+        <div class="module-header">
+            <h2><i class="fas fa-code"></i> Practical Examples</h2>
+        </div>
+        <div class="module-content">
+            <h3>Sorting Algorithms Comparison</h3>
+            <div class="complexity-table-container">
+                <table class="complexity-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Time Complexity (Average)</th>
+                            <th>Space Complexity</th>
+                            <th>Stability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bubble Sort</td>
+                            <td>O(n²)</td>
+                            <td>O(1)</td>
+                            <td>Stable</td>
+                        </tr>
+                        <tr>
+                            <td>Selection Sort</td>
+                            <td>O(n²)</td>
+                            <td>O(1)</td>
+                            <td>Unstable</td>
+                        </tr>
+                        <tr>
+                            <td>Insertion Sort</td>
+                            <td>O(n²)</td>
+                            <td>O(1)</td>
+                            <td>Stable</td>
+                        </tr>
+                        <tr>
+                            <td>Merge Sort</td>
+                            <td>O(n log n)</td>
+                            <td>O(n)</td>
+                            <td>Stable</td>
+                        </tr>
+                        <tr>
+                            <td>Quick Sort</td>
+                            <td>O(n log n)</td>
+                            <td>O(log n)</td>
+                            <td>Unstable</td>
+                        </tr>
+                        <tr>
+                            <td>Heap Sort</td>
+                            <td>O(n log n)</td>
+                            <td>O(1)</td>
+                            <td>Unstable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Real-World Impact</h3>
+            <p>Understanding complexity has real-world implications:</p>
+            <ul>
+                <li><strong>Social Media Feeds:</strong> Must process millions of posts efficiently</li>
+                <li><strong>Search Engines:</strong> Need to search billions of documents in milliseconds</li>
+                <li><strong>Mobile Apps:</strong> Must run smoothly on devices with limited resources</li>
+                <li><strong>Financial Systems:</strong> Require real-time processing of transactions</li>
+            </ul>
+            
+            <div class="info-box">
+                <h4><i class="fas fa-graduation-cap"></i> Learning Path</h4>
+                <p>To master algorithm complexity:</p>
+                <ol>
+                    <li>Learn the basic complexity classes (O(1), O(n), O(n²), etc.)</li>
+                    <li>Practice analyzing simple algorithms</li>
+                    <li>Study common data structures and their operations</li>
+                    <li>Solve algorithmic problems with efficiency constraints</li>
+                    <li>Use tools like CoDoc to analyze your code's complexity</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

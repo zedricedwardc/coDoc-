@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}CoDoc - About Us{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1 class="page-title">About CoDoc</h1>
+    
+    <div class="about-section">
+        <h2>Our Mission</h2>
+        <p>CoDoc was created with a simple yet powerful mission: to help developers write better, more efficient code. In today's world of complex software systems and massive datasets, code efficiency isn't just a luxury—it's a necessity.</p>
+        <p>We believe that understanding the complexity and structure of your code is the first step toward improving it. Our tool provides instant analysis of your code's time and space complexity, helping you identify bottlenecks and opportunities for optimization.</p>
+        <p>Whether you're a student learning about algorithms, a professional developer working on performance-critical applications, or an educator teaching computer science concepts, CoDoc aims to be your companion in the journey toward code excellence.</p>
+    </div>
+    
+    <div class="team-section">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Vince Jericho Abella</h3>
+                <p class="member-role">Frontend Developer</p>
+                <p class="member-bio">Responsible for the user interface development.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Joy Suzette Domingo</h3>
+                <p class="member-role">Frontend Developer</p>
+                <p class="member-bio">Responsible for the user interface development.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Zedric Edward Hernandez</h3>
+                <p class="member-role">Backend Developer</p>
+                <p class="member-bio">Responsible for the functionality management.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Gerard Andrei Malapote</h3>
+                <p class="member-role">Fullstack Developer</p>
+                <p class="member-bio">Helped with the development of both ends, responsible for website ideation.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>We're always looking to improve CoDoc and would love to hear your feedback or suggestions.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>contact@codoc-analyzer.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-globe"></i>
+                <span>www.codoc-analyzer.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <span>https://github.com/zedricedwardc/coDoc-</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
