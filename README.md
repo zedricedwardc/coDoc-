@@ -9,6 +9,44 @@
 
 ---
 
+## ✨ Features
+
+- **Code Analysis**
+  - Automatic language detection
+  - Code quality and structure evaluation
+  - Validation against selected language
+
+- **AI-Powered Refactoring**
+  - Generates optimized code versions
+  - Provides specific improvement suggestions
+  - Supports multiple programming languages
+
+- **Robust API**
+  - RESTful endpoints for analysis and refactoring
+  - Detailed error handling and logging
+  - JSON responses for easy integration
+
+- **Web Interface**
+  - User-friendly templates
+  - Interactive code submission
+  - Clear results presentation
+    
+---
+
+## 🛠️ Technologies Used
+
+| Category            | Technologies                          |
+|---------------------|---------------------------------------|
+| **Backend**         | Flask, Python                         |
+| **AI Engine**       | Google Generative AI (Gemini)         |
+| **Security**        | CORS, Environment Variables           |
+| **Logging**         | Python logging                        |
+| **Templating**      | Jinja2                                |
+| **API Handling**    | Flask RESTful routes                  |
+| **Dependencies**    | flask-cors, python-dotenv             |
+
+---
+
 ## 📝 **HOW TO RUN THE PROJECT**
 1. **Prerequisites**  
    - Ensure to install and use Python version 3.10 or above
