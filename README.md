@@ -19,15 +19,19 @@
      ```
      -pip install -r requirements.txt
 
-     ```
-           -✅ ast → For parsing Python source code into abstract syntax trees.
-           -✅ python-dotenv → For loading environment variables from .env files.
-           -✅ radon → For code complexity and maintainability analysis.
-           -✅ prettytable → For generating formatted tables in terminal output.
-           -✅ google-generativeai → For interacting with Google's Gemini AI models.
-           -✅ javalang → For parsing and analyzing Java source code.
-           -✅ esprima → For parsing JavaScript/TypeScript code.
-           -✅ pycparser → For parsing C source code.
+
+| ✅ | **Package**            | **Purpose**                                                                  |
+| - | ---------------------- | ---------------------------------------------------------------------------- |
+| ✅ | `Flask`                | Lightweight web framework to create API endpoints and render web pages.      |
+| ✅ | `flask-cors`           | Enables Cross-Origin Resource Sharing (CORS) for allowing external requests. |
+| ✅ | `python-dotenv`        | Loads environment variables securely from `.env` files.                      |
+| ✅ | `google-generativeai`  | Connects to Google Gemini (Generative AI) APIs for advanced AI interactions. |
+| ✅ | `os` (built-in)        | Interacts with the file system and environment.                              |
+| ✅ | `logging` (built-in)   | For logging errors and debug information.                                    |
+| ✅ | `traceback` (built-in) | Helps capture and display error stack traces.                                |
+| ✅ | `updated_app` (custom) | Contains domain logic for analysis and language detection.                   |
+| ✅ | `jinja2` (via Flask)   | Template engine used for rendering HTML files in the `templates/` folder.    |
+
 
    
 
