@@ -36,7 +36,9 @@
    
 
 3. **Running the Project**  
-   - Once everything is prepared, run the <ins>updated_app.py</ins> file.
+   - Once everything is prepared, run the <ins>app.py</ins> file.
+   - Copy the link that was provided in the terminal.
+   - Paste it in your browser.
 
 ---
 
