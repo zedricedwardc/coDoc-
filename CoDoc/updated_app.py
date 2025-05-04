@@ -87,7 +87,7 @@ def detect_language(code: str) -> str:
     """Detect the programming language of the given code."""
     # Check if the code is too short or just random text
     if len(code.strip()) < 10:
-        raise ValueError("Code sample is too short for analysis.")
+        return "unknown"  # Changed from raising error to returning unknown
     
     # Count pattern matches for each language
     pattern_scores = {}
@@ -106,34 +106,24 @@ def detect_language(code: str) -> str:
         # Check if the scores are significant enough to consider it mixed
         significant_langs = [lang for lang, score in pattern_scores.items() if score >= 2]
         if len(significant_langs) > 1:
-            detected_langs = ", ".join(significant_langs)
-            raise ValueError(f"Mixed language code detected ({detected_langs}). Please submit code in a single language.")
+            # Return the language with the highest score instead of raising an error
+            return max(pattern_scores.items(), key=lambda x: x[1])[0]
     
-    # Check for specific mixed language combinations that are common
-    # Python and JavaScript are commonly mixed
-    py_js_mix = False
-    if (re.search(r'def\s+\w+\s*$$[^)]*$$\s*:', code) and 
-        re.search(r'function\s+\w+\s*$$[^)]*$$\s*{', code)):
-        py_js_mix = True
-    
-    # Python and Java mix
-    py_java_mix = False
-    if (re.search(r'def\s+\w+\s*$$[^)]*$$\s*:', code) and 
-        re.search(r'public\s+(static\s+)?\w+\s+\w+\s*$$[^)]*$$\s*{', code)):
-        py_java_mix = True
-    
-    # JavaScript and Java mix
-    js_java_mix = False
-    if (re.search(r'function\s+\w+\s*$$[^)]*$$\s*{', code) and 
-        re.search(r'public\s+(static\s+)?\w+\s+\w+\s*$$[^)]*$$\s*{', code)):
-        js_java_mix = True
-    
-    if py_js_mix or py_java_mix or js_java_mix:
-        raise ValueError("Mixed language code detected. Please submit code in a single language.")
-    
-    # If no language patterns were found, it might be random text
+    # If no language patterns were found, try keyword counting
     if sum(pattern_scores.values()) == 0:
-        raise ValueError("No valid programming language detected. Please submit valid code.")
+        keyword_scores = {}
+        for lang, keywords in _LANGUAGE_KEYWORDS.items():
+            score = sum(code.count(kw) for kw in keywords)
+            keyword_scores[lang] = score
+        
+        max_keyword_score = max(keyword_scores.values()) if keyword_scores else 0
+        if max_keyword_score > 0:
+            max_keyword_langs = [lang for lang, score in keyword_scores.items() if score == max_keyword_score]
+            if len(max_keyword_langs) == 1:
+                return max_keyword_langs[0]
+        
+        # If still no match, default to the language specified by the user
+        return "python"  # Default to Python if we can't detect
     
     # Get the language with the highest pattern score
     max_score = max(pattern_scores.values())
@@ -168,8 +158,8 @@ def detect_language(code: str) -> str:
         if len(max_keyword_langs) == 1:
             return max_keyword_langs[0]
     
-    # If we still can't determine, return unknown
-    return 'unknown'
+    # If we still can't determine, return python as default
+    return 'python'
 
 # --- Standard Metrics ---
 def standard_metrics(code: str, funcs: int, loc: int, time_c: int = None) -> dict:
