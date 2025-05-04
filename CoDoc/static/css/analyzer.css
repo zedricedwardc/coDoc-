@@ -13,10 +13,10 @@ main.split-layout {
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg);
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
   overflow: hidden; /* Hide overflow */
   max-height: 100%; /* Limit to container height */
+  border-radius: 0.5rem;
 }
 
 .editor-header {
@@ -57,13 +57,15 @@ main.split-layout {
   left: 0;
   right: 0;
   bottom: 0;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .sample-code {
   display: flex;
   gap: 0.5rem;
   padding: 0.75rem;
-  background-color: #f1f5f9;
+  background-color: var(#94a3b8);
   flex-wrap: wrap;
 }
 
@@ -79,7 +81,7 @@ main.split-layout {
 }
 
 .sample-btn:hover {
-  background-color: var(--primary-color);
+  background-color: var(--text-dark);
 }
 
 /* Results Section */
@@ -87,11 +89,12 @@ main.split-layout {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: var(--card-bg);
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: var(#94a3b8);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   overflow: hidden; /* Hide overflow */
   max-height: 100%; /* Limit to container height */
+  z-index: 0;
 }
 
 .results-placeholder {
@@ -130,6 +133,10 @@ main.split-layout {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  z-index: 1;
 }
 
 .results-header {
@@ -154,6 +161,7 @@ main.split-layout {
   flex-direction: column;
   gap: 1.5rem;
   background-color: #f0f4f8;
+  
 }
 
 /* Neomorphism Styles */
@@ -469,7 +477,7 @@ main.split-layout {
 .secondary-btn {
   border-radius: 0.5rem;
   padding: 0.6rem 1.2rem;
-  font-weight: 500;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -480,7 +488,8 @@ main.split-layout {
 
 .primary-btn {
   background: linear-gradient(145deg, #6b6ef5, #5a5cce);
-  color: white;
+  margin-left: 20%;
+  font-weight: 600;
 }
 
 .primary-btn:hover {
