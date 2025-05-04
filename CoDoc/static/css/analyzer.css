@@ -13,7 +13,6 @@ main.split-layout {
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg);
-
   overflow: hidden; /* Hide overflow */
   max-height: 100%; /* Limit to container height */
   border-radius: 0.5rem;
@@ -63,10 +62,11 @@ main.split-layout {
 
 .sample-code {
   display: flex;
+  width: 100%;
   gap: 0.5rem;
   padding: 0.75rem;
   background-color: var(#94a3b8);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .sample-btn {
@@ -488,7 +488,6 @@ main.split-layout {
 
 .primary-btn {
   background: linear-gradient(145deg, #6b6ef5, #5a5cce);
-  margin-left: 20%;
   font-weight: 600;
 }
 
@@ -515,3 +514,15 @@ main.split-layout {
   box-shadow: inset 3px 3px 6px #0e9c6d, inset -3px -3px 6px #12d695;
   transform: translateY(0);
 }
+
+.buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+.sample-code:last-child {
+  justify-content: flex-end;
+}
+
