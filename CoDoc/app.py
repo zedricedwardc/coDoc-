@@ -17,7 +17,7 @@ CORS(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load environment variables
-load_dotenv('api_key.env')
+load_dotenv()
 API_KEY = os.getenv('GOOGLE_API_KEY')
 
 if API_KEY:
